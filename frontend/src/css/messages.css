@@ -1,0 +1,6 @@
+.messageContainer {
+  overflow-y: scroll;
+
+  flex: 1;
+  overscroll-behavior-y: none;
+}

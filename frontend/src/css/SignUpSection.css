@@ -1,0 +1,75 @@
+.signUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(188, 235, 255, 1);
+  position: fixed;
+  transform: translateX(0%);
+  color: rgba(0, 81, 255, 1);
+  overflow-y: scroll;
+  z-index: 10;
+  will-change: transform;
+}
+
+.signUp::-webkit-scrollbar {
+  width: 0;
+}
+
+.logo {
+  height: calc(36 * 5rem);
+  margin: 20rem;
+}
+
+.exit {
+  height: calc(28 * 5rem);
+  margin: 20rem;
+}
+
+.headerSignUp {
+  height: fit-content;
+}
+
+.signUpInput {
+  width: 100%;
+  margin-top: 20rem;
+  background: rgba(188, 235, 255, 1);
+  border: 22rem solid;
+  font-size: 80rem;
+  border-color: rgba(0, 81, 255, 1);
+  padding-bottom: 20rem;
+  box-sizing: border-box;
+  color: rgba(0, 81, 255, 1);
+}
+
+.signUpInput:focus {
+  outline: none;
+}
+
+.signUpInput::placeholder {
+  color: rgba(0, 81, 255, 1);
+}
+
+.validMessage {
+  margin: 20rem;
+}
+
+.inputSection {
+  width: 90%;
+}
+
+.submitButton {
+  width: 90%;
+  background: rgba(188, 235, 255, 1);
+  border: 22rem solid;
+  font-size: 80rem;
+  border-color: rgba(115, 183, 255, 1);
+  padding: 30rem;
+  margin-bottom: 180rem;
+
+  box-sizing: border-box;
+  color: rgba(188, 235, 255, 1);
+  background: rgba(5, 41, 118, 1);
+}

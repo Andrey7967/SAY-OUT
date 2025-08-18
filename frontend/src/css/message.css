@@ -1,0 +1,41 @@
+.message {
+  width: 100%;
+  background: rgba(188, 235, 255, 1);
+  border-top: 22rem solid;
+  font-size: 80rem;
+  border-color: rgba(115, 183, 255, 1);
+  padding-bottom: 20rem;
+
+  font-family: Alumni Sans;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.message::-webkit-selection {
+  background: red;
+}
+
+.messageForeign {
+  color: rgba(0, 81, 255, 1);
+  background: rgba(188, 235, 255, 1);
+}
+
+.messageAuthor {
+  color: rgba(188, 235, 255, 1);
+  background: rgba(5, 41, 118, 1);
+}
+
+.authorName {
+  width: 100%;
+  text-align: left;
+  margin-top: 10rem;
+  font-size: 60rem;
+  font-family: Comfortaa;
+}
+
+.content {
+  margin-top: 10rem;
+}
