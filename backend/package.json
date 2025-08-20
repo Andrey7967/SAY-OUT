@@ -15,9 +15,6 @@
     "@types/cookie-parser": "^1.4.9",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.9",
-    "@types/swagger-jsdoc": "^6.0.4",
-    "@types/swagger-stats": "^0.95.11",
-    "@types/swagger-ui-express": "^4.1.8",
     "@types/ws": "^8.18.1",
     "bcrypt": "^6.0.0",
     "cookie": "^1.0.2",
@@ -28,8 +25,5 @@
     "swagger-stats": "^0.99.7",
     "ws": "^8.18.3"
   },
-  "dependencies": {
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  }
+  "dependencies": {}
 }
