@@ -72,11 +72,11 @@ Or use **run.bat** file to run servers
 
 ## Showing
 
-![ ](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![ ](https://github.com/Andrey7967/SAY-OUT/blob/main/readmeSources/1.png)
 
-![ ](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![ ](https://github.com/Andrey7967/SAY-OUT/blob/main/readmeSources/2.png)
 
-![ ](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![ ](https://github.com/Andrey7967/SAY-OUT/blob/main/readmeSources/3.png)
 
 
 ## Tech Stack
