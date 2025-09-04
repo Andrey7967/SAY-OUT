@@ -2,7 +2,7 @@ import { animated, useTransition } from '@react-spring/web';
 import '../css/SignUpSection.css';
 
 import axios from 'axios';
-import { useState } from 'react';
+import { EventHandler, useState } from 'react';
 import brightLogo from '../img/brightLogo.svg';
 import exit from '../img/exit.svg';
 import privateEyes from '../img/privateEyes.svg';
@@ -33,7 +33,7 @@ export default function LogInSection() {
   });
   const [isPrivateEyes, setIsPrivateEyes] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogInInput({
       ...logInInput,
@@ -41,7 +41,7 @@ export default function LogInSection() {
     } as LogInInput);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (logInInput.email === loggedEmail) {

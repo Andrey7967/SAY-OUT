@@ -46,14 +46,14 @@ export default function MessageInput() {
     };
   }, [isLogged, userId]);
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: any) {
     if (e.key == 'Enter' && !e.shiftKey && !isMobile()) {
       e.preventDefault();
       handleSubmit(e);
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     if (inputRef.current) {
       inputRef.current.focus();
       inputRef.current.style.height = 'auto';

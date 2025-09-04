@@ -4,7 +4,7 @@ interface IUserField {
   name: string;
   value: any;
 }
-const checkUnique = async (userField: IUserField, setStateFunction) => {
+const checkUnique = async (userField: IUserField, setStateFunction: any) => {
   await axios
     .get(
       `http://${PCHost}:3001/check_unique/${userField.name}/${userField.value}`

@@ -1,7 +1,7 @@
 import LogInSection from './Components/LogInSection';
 import SignUpSection from './Components/SignUpSection';
 import MessageInput from './Components/messageInput';
-import Sidebar from './Components/sidebar';
+import Sidebar from './Components/Sidebar';
 import './css/App.css';
 import { useAppSelector } from './states/Store';
 

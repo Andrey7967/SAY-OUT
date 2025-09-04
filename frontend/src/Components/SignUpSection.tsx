@@ -43,7 +43,7 @@ export default function SignUpSection() {
 
   const [isPrivateEyes, setIsPrivateEyes] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setSignUpInput({
       ...signUpInput,
@@ -63,7 +63,7 @@ export default function SignUpSection() {
       }
     }
   }
-  const handleChangeUnique = (e, setState) => {
+  const handleChangeUnique = (e: any, setState: any) => {
     const { value } = e.target;
     handleChange(e);
     if (value !== '') {
@@ -71,7 +71,7 @@ export default function SignUpSection() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (

@@ -1,4 +1,9 @@
-export function makeCustomBezier(x0, y0, x1, y1): Function {
+export function makeCustomBezier(
+  x0: number,
+  y0: number,
+  x1: number,
+  y1: number
+): Function {
   return (t: number): number => {
     return (
       (1 - t) ** 3 * x0 * +3 * t * (1 - t) ** 2 * y0 +
