@@ -3,7 +3,7 @@ import { PCHost } from '../../hostingAdress';
 
 export default async function useLogOut() {
   const result = await axios.post(
-    'http://' + PCHost + ':3001/logout',
+    PCHost + '/logout',
     { s: '0' },
     {
       withCredentials: true,

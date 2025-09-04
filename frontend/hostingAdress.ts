@@ -1,1 +1,1 @@
-export const PCHost = '192.168.1.129';
+export const PCHost = 'https://say-out.onrender.com';

@@ -11,7 +11,7 @@ export default function useLogIn() {
   useEffect(() => {
     const axi = async () => {
       try {
-        const result = await axios.get('http://' + PCHost + ':3001/getme', {
+        const result = await axios.get(PCHost + '/getme', {
           withCredentials: true,
         });
 

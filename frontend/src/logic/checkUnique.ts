@@ -6,9 +6,7 @@ interface IUserField {
 }
 const checkUnique = async (userField: IUserField, setStateFunction: any) => {
   await axios
-    .get(
-      `http://${PCHost}:3001/check_unique/${userField.name}/${userField.value}`
-    )
+    .get(`${PCHost}/check_unique/${userField.name}/${userField.value}`)
     .then((response) => {
       setStateFunction(response.data.result);
     })

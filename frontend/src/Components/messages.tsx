@@ -29,12 +29,9 @@ export default function Messages() {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await axios.get(
-          'http://' + PCHost + ':3001/get_message',
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get(PCHost + '/get_message', {
+          withCredentials: true,
+        });
         dispatch(setMessages(response.data.reverse()));
 
         setIsLoaded(true);

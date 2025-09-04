@@ -86,7 +86,7 @@ export default function SignUpSection() {
       signUpInput.repeatPassword !== ''
     ) {
       await axios
-        .post('http://' + PCHost + ':3001/register', signUpInput, {
+        .post(PCHost + '/register', signUpInput, {
           withCredentials: true,
           headers: {
             'Content-Type': 'application/json',

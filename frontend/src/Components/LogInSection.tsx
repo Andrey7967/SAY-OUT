@@ -48,7 +48,7 @@ export default function LogInSection() {
       setLogMessage("you're already here");
     } else if (logInInput.email !== '' && logInInput.password !== '') {
       await axios
-        .post('http://' + PCHost + ':3001/login', logInInput, {
+        .post(PCHost + '/login', logInInput, {
           withCredentials: true,
           headers: {
             'Content-Type': 'application/json',
