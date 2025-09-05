@@ -1,0 +1,17 @@
+{
+  "name": "SAY OUT",
+  "short_name": "SAY OUT",
+  "start_url": "/SAY-OUT",
+  "scope": "/SAY-OUT",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "rgba(188, 235, 255, 1)",
+  "theme_color": "rgba(188, 235, 255, 1)",
+  "icons": [
+    {
+      "src": "./glassyA.png",
+      "sizes": "512x512"
+    }
+  ]
+
+}
