@@ -1,8 +1,8 @@
 {
   "name": "SAY OUT",
   "short_name": "SAY OUT",
-  "start_url": "/SAY-OUT",
-  "scope": "/SAY-OUT",
+  "start_url": "/",
+  "scope": "/",
   "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "rgba(188, 235, 255, 1)",
