@@ -43,12 +43,12 @@ app.use("/get_message", authMiddleware, getMessage);
 app.use("/check_unique", validateOriginal);
 
 
-/*app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
 });
-*/
+
 const server = http.createServer(app);
 
 const wss = new WebSocketServer({ noServer: true });
