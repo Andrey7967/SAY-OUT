@@ -32,7 +32,7 @@ export default async function loginUser(req: Request, res: Response) {
     res.cookie("jwt", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "lax",
+      sameSite: "none",
       maxAge: 3600000,
 
       path: "/",
