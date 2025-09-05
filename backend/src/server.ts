@@ -26,6 +26,9 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "https://andrey7967.github.io"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+    exposedHeaders: ["Set-Cookie"],
   })
 );
 
