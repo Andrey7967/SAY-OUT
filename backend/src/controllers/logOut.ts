@@ -15,7 +15,7 @@ export default async function logOut(req: Request, res: Response) {
     }
     res.cookie("jwt", fakeToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "none",
       maxAge: 0,
     });
