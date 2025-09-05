@@ -24,7 +24,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://andrey7967.github.io/SAY-OUT/"],
+    origin: ["http://localhost:5173", "https://andrey7967.github.io"],
     credentials: true,
   })
 );
