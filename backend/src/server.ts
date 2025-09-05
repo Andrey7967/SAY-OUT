@@ -44,6 +44,14 @@ app.use("/logout", logOut);
 app.use("/get_message", authMiddleware, getMessage);
 app.use("/check_unique", validateOriginal);
 
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Все остальные GET запросы → отдаем index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 const server = http.createServer(app);
 
 const wss = new WebSocketServer({ noServer: true });
