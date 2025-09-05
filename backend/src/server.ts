@@ -4,7 +4,7 @@ import { PORT } from "./config/env";
 import { WebSocketServer, WebSocket } from "ws";
 import http, { IncomingMessage } from "http";
 import jwt from "jsonwebtoken";
-
+import path from 'path'
 import cors from "cors";
 import express, { Express } from "express";
 import registerUser from "./routes/register";
@@ -26,9 +26,7 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "https://andrey7967.github.io"],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-    exposedHeaders: ["Set-Cookie"],
+  
   })
 );
 
