@@ -1,6 +1,7 @@
 
 # SAY OUT
 
+go to https://say-out.onrender.com, install as pwa for better experience and enjoy!
 social network where you can be anonymous and write your thoughts. It can be amusing for small groups that can share to each other interesting info and discuss.
 
 
