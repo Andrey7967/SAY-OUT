@@ -9,9 +9,8 @@
   "theme_color": "rgba(188, 235, 255, 1)",
   "icons": [
     {
-      "src": "./public/glassyA.png",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "./glassyA.png",
+      "sizes": "512x512"
     }
   ]
 }
