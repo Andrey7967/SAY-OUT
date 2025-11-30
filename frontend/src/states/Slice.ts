@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface State {
+  isProfile: boolean;
   isLogIn: boolean;
   isSignUp: boolean;
   isLogged: boolean;
@@ -12,6 +13,8 @@ interface State {
 }
 
 const initialState: State = {
+  isProfile: false,
+
   isLogIn: false,
   isSignUp: false,
   isLogged: false,
@@ -62,6 +65,11 @@ const componentsSlice = createSlice({
     setMessages: (state, action) => {
       state.messages = action.payload;
     },
+    setIsProfile: (state, action) => {
+     
+
+      state.isProfile = action.payload;
+    },
     setGlobalWebSocket: (state, action) => {
       state.globalWebSocket = action.payload;
     },
@@ -69,6 +77,7 @@ const componentsSlice = createSlice({
 });
 
 export const {
+  setIsProfile,
   setIsLogIn,
   setIsSignUp,
   setIsLogged,

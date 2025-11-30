@@ -26,8 +26,8 @@ export default async function registerUser(req: Request, res: Response) {
     }
     res.cookie("jwt", token, {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+     secure: false,
+      sameSite: "lax",
       maxAge: 3600000,
       path: "/",
     });

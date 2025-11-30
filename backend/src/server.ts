@@ -19,6 +19,7 @@ import getMe from "./routes/getMe";
 import validateOriginal from "./routes/uniqueValidation";
 
 import { clients } from "./clientsDataFile";
+import getUserMessages from "./routes/getUserMessages";
 
 const app: Express = express();
 
@@ -37,6 +38,7 @@ app.use("/register", registerUser);
 app.use("/login", loginUser);
 
 app.use("/getme", authMiddleware, getMe);
+app.use("/getUserMessages", authMiddleware, getUserMessages);
 app.use("/logout", logOut);
 
 app.use("/get_message", authMiddleware, getMessage);

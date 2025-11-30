@@ -5,7 +5,7 @@ import skyLogo from '../img/skyLogo.svg';
 import ButtonForDark from './buttonForDarkBlue';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../states/Store';
-import { setIsLogged, setIsLogIn, setIsSignUp } from '../states/Slice';
+import { setIsLogged, setIsLogIn, setIsProfile, setIsSignUp } from '../states/Slice';
 import useLogOut from '../hooks/useLogOut';
 
 export default function Sidebar() {
@@ -54,11 +54,29 @@ export default function Sidebar() {
         </div>
         <div className="sidebar-tongue"> </div>
         <div className="buttonSection">
+           <ButtonForDark
+            content={'Profile'}
+            handleClick={() => {
+               dispatch(setIsProfile({ data: true }));
+              dispatch(setIsSignUp({ data: false }));
+              dispatch(setIsLogIn(false));
+              setToggle(false);
+              api.start({
+                from: {
+                  transform: toggle ? 'translateX(0%)' : 'translateX(-100%)',
+                },
+                to: {
+                  transform: !toggle ? 'translateX(0%)' : 'translateX(-100%)',
+                },
+              });
+            }}
+          />
           <ButtonForDark
             content={'Sign Up'}
             handleClick={() => {
               dispatch(setIsSignUp({ data: true }));
               dispatch(setIsLogIn(false));
+              dispatch(setIsProfile(false));
               setToggle(false);
               api.start({
                 from: {
@@ -73,6 +91,7 @@ export default function Sidebar() {
           <ButtonForDark
             content={'Log In'}
             handleClick={() => {
+              dispatch(setIsProfile({ data: false }));
               dispatch(setIsLogIn({ data: true }));
               dispatch(setIsSignUp({ data: false }));
               setToggle(false);

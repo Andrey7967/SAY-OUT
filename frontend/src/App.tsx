@@ -8,6 +8,7 @@ import { useAppSelector } from './states/Store';
 import Messages from './Components/messages';
 import StartSection from './Components/StartSection';
 import useLogIn from './hooks/usegetMe';
+import Profile from './Components/Profile';
 
 export default function App() {
   const { loading: loading } = useLogIn();
@@ -16,6 +17,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <Profile />
       <SignUpSection />
       <LogInSection />
       <Sidebar />
