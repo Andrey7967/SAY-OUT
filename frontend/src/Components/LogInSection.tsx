@@ -11,6 +11,7 @@ import {
   setIsLogIn,
   setLoggedEmail,
   setLoggedNickname,
+  setRole,
   setUserId,
 } from '../states/Slice';
 import { useAppDispatch, useAppSelector } from '../states/Store';
@@ -61,7 +62,8 @@ export default function LogInSection() {
           dispatch(setIsLogged({ data: response.data.user.isLogged }));
           dispatch(setLoggedNickname({ data: response.data.user.nickname }));
           dispatch(setLoggedEmail({ data: response.data.user.email }));
-
+          dispatch(setRole(response.data.user.role));
+          console.log(response.data.user.role, 'dfd');
           dispatch(setUserId({ data: response.data.user.id }));
         })
         .catch((error) => {

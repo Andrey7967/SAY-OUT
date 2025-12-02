@@ -1,14 +1,13 @@
 import { Request, Response } from "express";
 import pool from "../config/db";
 
-export default async function getUserMessages(req: Request, res: Response) {
+export default async function adminGetUsers(req: Request, res: Response) {
   try {
     const result = await pool.query(
-      "SELECT messages.id, messages.content  FROM messages   WHERE messages.user_id = $1  ORDER BY created_at DESC ",
-      [req.body.id]
+      "SELECT id, nickname, email FROM users  ORDER BY nickname DESC "
     );
 
-    res.json({ messages: result.rows });
+    res.json({ users: result.rows });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Внутренняя ошибка сервера" });

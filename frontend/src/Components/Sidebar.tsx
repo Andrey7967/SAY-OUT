@@ -5,7 +5,14 @@ import skyLogo from '../img/skyLogo.svg';
 import ButtonForDark from './buttonForDarkBlue';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../states/Store';
-import { setIsLogged, setIsLogIn, setIsProfile, setIsSignUp } from '../states/Slice';
+import {
+  setIsLogged,
+  setIsLogIn,
+  setIsProfile,
+  setIsSignUp,
+  setLoggedEmail,
+  setLoggedNickname,
+} from '../states/Slice';
 import useLogOut from '../hooks/useLogOut';
 
 export default function Sidebar() {
@@ -48,29 +55,31 @@ export default function Sidebar() {
           }}
         ></div>
         <div className="stripes">
-          <hr className="stripe"></hr>
-          <hr className="stripe"></hr>
-          <hr className="stripe"></hr>
+          <hr className="myStripe"></hr>
+          <hr className="myStripe"></hr>
+          <hr className="myStripe"></hr>
         </div>
         <div className="sidebar-tongue"> </div>
         <div className="buttonSection">
-           <ButtonForDark
-            content={'Profile'}
-            handleClick={() => {
-               dispatch(setIsProfile({ data: true }));
-              dispatch(setIsSignUp({ data: false }));
-              dispatch(setIsLogIn(false));
-              setToggle(false);
-              api.start({
-                from: {
-                  transform: toggle ? 'translateX(0%)' : 'translateX(-100%)',
-                },
-                to: {
-                  transform: !toggle ? 'translateX(0%)' : 'translateX(-100%)',
-                },
-              });
-            }}
-          />
+          {isLogged && (
+            <ButtonForDark
+              content={'Profile'}
+              handleClick={() => {
+                dispatch(setIsProfile({ data: true }));
+                dispatch(setIsSignUp({ data: false }));
+                dispatch(setIsLogIn(false));
+                setToggle(false);
+                api.start({
+                  from: {
+                    transform: toggle ? 'translateX(0%)' : 'translateX(-100%)',
+                  },
+                  to: {
+                    transform: !toggle ? 'translateX(0%)' : 'translateX(-100%)',
+                  },
+                });
+              }}
+            />
+          )}
           <ButtonForDark
             content={'Sign Up'}
             handleClick={() => {
@@ -111,6 +120,8 @@ export default function Sidebar() {
               handleClick={() => {
                 useLogOut().then((data) => {
                   dispatch(setIsLogged(data));
+                  dispatch(setLoggedNickname(''));
+                  dispatch(setLoggedEmail(''));
                 });
               }}
             />

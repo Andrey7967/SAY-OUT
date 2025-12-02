@@ -16,7 +16,7 @@ export default function Messages() {
 
   const messagesRef = useRef<HTMLDivElement>(null);
   const shouldAutoScrollRef = useRef<boolean>(false);
-
+  const update = useAppSelector((state) => state.app.updateMessages);
   if (messagesRef.current) {
     shouldAutoScrollRef.current =
       Math.abs(
@@ -33,7 +33,7 @@ export default function Messages() {
           withCredentials: true,
         });
         dispatch(setMessages(response.data.reverse()));
-
+        console.log(response.data);
         setIsLoaded(true);
       } catch (error) {
         console.error('Error fetching messages:', error);
@@ -41,7 +41,7 @@ export default function Messages() {
     };
 
     fetchMessages();
-  }, []);
+  }, [update]);
 
   const [spring, api] = useSpring(() => ({
     scrollTop: messagesRef.current?.scrollTop,

@@ -17,7 +17,7 @@ export default function MessageInput() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     if (isLogged) {
-      wsRef.current = new WebSocket('wss://say-out.onrender.com');
+      wsRef.current = new WebSocket('ws://localhost:3001');
 
       wsRef.current.onopen = () => {
         console.log('WebSocket connected');

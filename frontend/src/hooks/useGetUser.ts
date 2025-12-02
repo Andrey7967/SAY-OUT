@@ -4,25 +4,21 @@ import { useAppDispatch, useAppSelector } from '../states/Store';
 import { setIsLogged, setLoggedNickname, setUserId } from '../states/Slice';
 import { PCHost } from '../../hostingAdress';
 
-export default function useGetUserMessage() {
-  const [messages, setMessages] = useState([]);
+export default function useGetUser() {
+  const [users, setUsers] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const role = useAppSelector((state) => state.app.role);
-  const update = useAppSelector((state) => state.app.updateMessages);
+  const update = useAppSelector((state) => state.app.updateUsers);
   useEffect(() => {
     const axi = async () => {
       try {
-        const result = await axios.get(
-          PCHost +
-            (role === 'admin' ? '/adminGetMessages' : '/getUserMessages'),
-          {
-            withCredentials: true,
-          }
-        );
+        const result = await axios.get(PCHost + '/adminGetUsers', {
+          withCredentials: true,
+        });
 
-        setMessages(result.data.messages);
+        setUsers(result.data.users);
       } catch (err) {
         setError(err as Error);
       } finally {
@@ -33,5 +29,5 @@ export default function useGetUserMessage() {
     axi();
   }, [update]);
 
-  return { messages, loading, error };
+  return { users, loading, error };
 }

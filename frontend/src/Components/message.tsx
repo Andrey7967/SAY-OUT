@@ -8,7 +8,10 @@ interface MessageProps {
 export default function Message({ content, author, authorName }: MessageProps) {
   return (
     <div
-      className={'message' + (author ? ' messageAuthor ' : ' messageForeign ')}
+      className={
+        'flex-grow-1 message' +
+        (author ? ' messageAuthor ' : ' messageForeign ')
+      }
     >
       <div className="container">
         <div className="authorName">{author ? 'You ' : authorName}</div>

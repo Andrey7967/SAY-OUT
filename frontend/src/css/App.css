@@ -47,11 +47,6 @@ body {
   padding-right: 35rem;
 }
 
-hr {
-  border: 11rem solid;
-  border-color: rgba(115, 183, 255, 1);
-}
-
 .rowify {
   display: flex;
   flex-direction: row;
@@ -109,6 +104,13 @@ hr {
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
+.List {
+  height: 50%;
+  overflow: scroll;
+}
+.noBottomScroll {
+  overflow-x: hidden;
+}
 
 @media (min-width: 50rem) {
   .App {
@@ -123,7 +125,10 @@ hr {
     position: absolute;
     width: calc(100% + 1px);
   }
-
+  .Profile {
+    position: absolute;
+    width: calc(100% + 1px);
+  }
   .sidebar {
     position: absolute;
     transform: translateX(-100%);

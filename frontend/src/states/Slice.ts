@@ -5,16 +5,20 @@ interface State {
   isLogIn: boolean;
   isSignUp: boolean;
   isLogged: boolean;
+  role: 'admin' | 'user';
   loggedNickname: string;
   loggedEmail: string;
   messages: Array<messageQuery>;
   userId: number;
   globalWebSocket: WebSocket | null;
+  updateUsers: boolean;
+  updateMessages: boolean;
+  updateUserData: boolean;
 }
 
 const initialState: State = {
   isProfile: false,
-
+  role: 'user',
   isLogIn: false,
   isSignUp: false,
   isLogged: false,
@@ -23,6 +27,9 @@ const initialState: State = {
   messages: [],
   userId: -1,
   globalWebSocket: null,
+  updateUsers: false,
+  updateMessages: false,
+  updateUserData: false,
 };
 
 const componentsSlice = createSlice({
@@ -66,9 +73,23 @@ const componentsSlice = createSlice({
       state.messages = action.payload;
     },
     setIsProfile: (state, action) => {
-     
+      const { data } = action.payload;
 
-      state.isProfile = action.payload;
+      state.isProfile = data;
+    },
+    setRole: (state, action) => {
+      state.role = action.payload;
+    },
+
+    toggleUpdateUsers: (state) => {
+      state.updateUsers = !state.updateUsers;
+    },
+
+    toggleUpdateMessages: (state) => {
+      state.updateMessages = !state.updateMessages;
+    },
+    toogleUpdateUserData: (state) => {
+      state.updateUserData = !state.updateUserData;
     },
     setGlobalWebSocket: (state, action) => {
       state.globalWebSocket = action.payload;
@@ -87,5 +108,9 @@ export const {
   setMessages,
   setGlobalWebSocket,
   setLoggedEmail,
+  setRole,
+  toggleUpdateMessages,
+  toggleUpdateUsers,
+  toogleUpdateUserData,
 } = componentsSlice.actions;
 export default componentsSlice.reducer;

@@ -1,7 +1,6 @@
 export default interface IGetUserMessages {
-    id: number,
-    content: string,
-    
+  id: number;
+  content: string;
+  nickname: string;
+  email: string;
 }
-
-

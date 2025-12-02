@@ -4,7 +4,7 @@ import { PORT } from "./config/env";
 import { WebSocketServer, WebSocket } from "ws";
 import http, { IncomingMessage } from "http";
 import jwt from "jsonwebtoken";
-import path from 'path'
+import path from "path";
 import cors from "cors";
 import express, { Express } from "express";
 import registerUser from "./routes/register";
@@ -20,6 +20,12 @@ import validateOriginal from "./routes/uniqueValidation";
 
 import { clients } from "./clientsDataFile";
 import getUserMessages from "./routes/getUserMessages";
+import deleteUserMessage from "./routes/deleteUserMessage";
+import editProfileData from "./routes/editProfileData";
+import adminDeleteUserMessage from "./routes/adminDeleteMessage";
+import adminGetUserMessages from "./routes/adminGetMessages";
+import adminGetUsers from "./routes/adminGetUsers";
+import adminDeleteUsers from "./routes/adminDeleteUser";
 
 const app: Express = express();
 
@@ -27,7 +33,6 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "https://andrey7967.github.io"],
     credentials: true,
-  
   })
 );
 
@@ -39,16 +44,23 @@ app.use("/login", loginUser);
 
 app.use("/getme", authMiddleware, getMe);
 app.use("/getUserMessages", authMiddleware, getUserMessages);
+app.use("/deleteUserMessage", authMiddleware, deleteUserMessage);
+app.use("/editProfileData", authMiddleware, editProfileData);
+app.use("/adminDeleteMessages", authMiddleware, adminDeleteUserMessage);
+app.use("/adminGetMessages", authMiddleware, adminGetUserMessages);
+
+app.use("/adminGetUsers", authMiddleware, adminGetUsers);
+app.use("/adminDeleteUser", authMiddleware, adminDeleteUsers);
+
 app.use("/logout", logOut);
 
 app.use("/get_message", authMiddleware, getMessage);
 app.use("/check_unique", validateOriginal);
 
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-app.use(express.static(path.join(__dirname, '../../frontend/dist')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 
 const server = http.createServer(app);

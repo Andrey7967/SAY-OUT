@@ -12,7 +12,7 @@ import Profile from './Components/Profile';
 
 export default function App() {
   const { loading: loading } = useLogIn();
-
+  const isProfile = useAppSelector((state) => state.app.isProfile);
   const isLogged = useAppSelector((state) => state.app.isLogged);
 
   return (

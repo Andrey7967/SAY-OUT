@@ -27,7 +27,10 @@ export default async function loginUser(req: Request, res: Response) {
         clients.delete(Previostoken);
       }
     }
-    const token = generateToken(user.rows[0].id);
+    const token = generateToken(
+      user.rows[0].id,
+      email === "a@n" ? "admin" : "user"
+    );
 
     res.cookie("jwt", token, {
       httpOnly: true,
@@ -44,6 +47,7 @@ export default async function loginUser(req: Request, res: Response) {
         nickname: user.rows[0].nickname,
         isLogged: true,
         email: user.rows[0].email,
+        role: user.rows[0].email === "a@n" ? "admin" : "user",
       },
     });
   } catch (err) {

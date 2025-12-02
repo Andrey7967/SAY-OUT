@@ -32,6 +32,8 @@
 
 .messageInputHr {
   margin-top: 22rem;
+  border: 11rem solid;
+  border-color: rgba(115, 183, 255, 1);
 }
 
 .messageInputTextArea:focus {

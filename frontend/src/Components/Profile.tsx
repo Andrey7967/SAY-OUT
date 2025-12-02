@@ -20,6 +20,9 @@ import privateEyes from '../img/privateEyes.svg';
 import axios from 'axios';
 import { PCHost } from '../../hostingAdress';
 import ProfileMessages from './ProfileMessages';
+import UserData from './UserData';
+import { EditUserDataElement } from './editUserDataFields';
+import AdminUsers from './adminUsersList';
 
 interface signUpInput {
   nickname: string;
@@ -30,79 +33,20 @@ interface signUpInput {
 
 export default function Profile() {
   const isProfile = useAppSelector((state) => state.app.isProfile);
+  const role = useAppSelector((state) => state.app.role);
   const dispatch = useAppDispatch();
-
-  
-
-  const [signUpSectionMessage, setSignUpSectionMessage] = useState('\u00A0');
-  const [isUniqueNickname, setIsUniqueNickname] = useState<boolean>(false);
-  const [isUniqueEmail, setIsUniqueEmail] = useState<boolean>(false);
-
-
-
-//   const handleChange = (e: any) => {
-//     const { name, value } = e.target;
-//     setSignUpInput({
-//       ...signUpInput,
-//       [name]: value,
-//     } as signUpInput);
-//   };
-
-  function checkEmailInput(email: string): boolean {
-    const dogPosition = email.indexOf('@');
-    if (dogPosition === -1) {
-      return false;
-    } else {
-      if (dogPosition - 1 >= 0 && dogPosition + 1 <= email.length - 1) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
-//   const handleChangeUnique = (e: any, setState: any) => {
-//     const { value } = e.target;
-//     handleChange(e);
-//     if (value !== '') {
-//       checkUnique(e.target, setState);
-//     }
-//   };
-
-//   const handleSubmit = async (e: any) => {
-//     e.preventDefault();
-
-//     if (
-//       signUpInput.password === signUpInput.repeatPassword &&
-//       isUniqueNickname === true &&
-//       isUniqueEmail === true &&
-//       signUpInput.email !== '' &&
-//       signUpInput.nickname !== '' &&
-//       signUpInput.email.indexOf('@') !== -1 &&
-//       checkEmailInput(signUpInput.email) &&
-//       signUpInput.password !== '' &&
-//       signUpInput.repeatPassword !== ''
-//     ) {
-//       await axios
-//         .post(PCHost + '/register', signUpInput, {
-//           withCredentials: true,
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//         })
-//         .then((response) => {
-//           dispatch(setIsLogged({ data: true }));
-//           dispatch(setUserId({ data: response.data.user.id }));
-//           dispatch(setLoggedNickname({ data: response.data.user.nickname }));
-//           dispatch(setLoggedEmail({ data: response.data.user.email }));
-//           dispatch(setIsSignUp({ data: false }));
-//         })
-//         .catch((error) => {
-//           console.error('Error:', error);
-//         });
-//     } else {
-//       setSignUpSectionMessage("input data aren't correct");
-//     }
-//   };
+  const [isToEdit, setIsToEdit] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const handleEdit = () => {
+    setIsToEdit(true);
+  };
+  //   const handleChange = (e: any) => {
+  //     const { name, value } = e.target;
+  //     setSignUpInput({
+  //       ...signUpInput,
+  //       [name]: value,
+  //     } as signUpInput);
+  //   };
 
   const transitions = useTransition(isProfile, {
     from: {
@@ -114,18 +58,14 @@ export default function Profile() {
     leave: {
       transform: 'translateY(100%)',
     },
-    // onDestroyed: () => {
-    //   setSignUpInput({
-    //     nickname: '',
-    //     email: '',
-    //     password: '',
-    //     repeatPassword: '',
-    //   });
-    //   setSignUpSectionMessage('\u00A0');
-    //   setIsUniqueNickname(false);
-    //   setIsUniqueEmail(false);
-    //   setIsPrivateEyes(false);
-    // },
+    onDestroyed: () => {
+      setIsLoaded(false);
+    },
+    onRest: () => {
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 3000);
+    },
     config: {
       tension: 450,
       friction: 70,
@@ -135,12 +75,12 @@ export default function Profile() {
 
   return transitions((style, item) =>
     item ? (
-      <animated.form className="signUp" style={style}>
-        <div className="rowify spaceBetween width100 headerSignUp">
+      <animated.div className="Profile width100 customScroll" style={style}>
+        <div className="rowify spaceBetween  headerSignUp width100">
           <div className="rowify">
             <img className="logo" src={brightLogo}></img>
             <div className="p36 seldomFont centerTitle">
-             Your own <br></br> profile
+              Your own <br></br> profile
             </div>
           </div>
 
@@ -152,9 +92,20 @@ export default function Profile() {
             }}
           ></img>
         </div>
-       
-        <ProfileMessages/>
-      </animated.form>
+
+        {isLoaded && isProfile && (
+          <>
+            {role == 'user' &&
+              (isToEdit ? (
+                <EditUserDataElement setIsToEdit={setIsToEdit} />
+              ) : (
+                <UserData handleEdit={handleEdit} />
+              ))}
+            {role === 'admin' && <AdminUsers />}
+            <ProfileMessages />
+          </>
+        )}
+      </animated.div>
     ) : null
   );
 }

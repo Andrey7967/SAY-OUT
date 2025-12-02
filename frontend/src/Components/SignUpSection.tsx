@@ -10,6 +10,7 @@ import {
   setIsSignUp,
   setLoggedEmail,
   setLoggedNickname,
+  setRole,
   setUserId,
 } from '../states/Slice';
 import { useAppDispatch, useAppSelector } from '../states/Store';
@@ -94,6 +95,7 @@ export default function SignUpSection() {
         })
         .then((response) => {
           dispatch(setIsLogged({ data: true }));
+          dispatch(setRole(response.data.user.role));
           dispatch(setUserId({ data: response.data.user.id }));
           dispatch(setLoggedNickname({ data: response.data.user.nickname }));
           dispatch(setLoggedEmail({ data: response.data.user.email }));

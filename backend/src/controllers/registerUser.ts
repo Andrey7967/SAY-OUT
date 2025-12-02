@@ -15,7 +15,7 @@ export default async function registerUser(req: Request, res: Response) {
       [nickname, email, hashedPassword]
     );
 
-    const token = generateToken(result.rows[0].id);
+    const token = generateToken(result.rows[0].id, "user");
 
     const Previostoken = req.cookies.jwt;
     if (Previostoken) {
@@ -26,7 +26,7 @@ export default async function registerUser(req: Request, res: Response) {
     }
     res.cookie("jwt", token, {
       httpOnly: true,
-     secure: false,
+      secure: false,
       sameSite: "lax",
       maxAge: 3600000,
       path: "/",
@@ -36,6 +36,7 @@ export default async function registerUser(req: Request, res: Response) {
         id: result.rows[0].id,
         nickname: result.rows[0].nickname,
         email: result.rows[0].email,
+        role: "user",
       },
     });
   } catch (err) {

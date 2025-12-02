@@ -31,16 +31,18 @@ const authMiddleware = async (
     if (!user.rows.length) {
       throw new Error("Пользователь не найден");
     }
-
-    req.body = { ...req.body, ...user.rows[0] };
+    console.log("role", decoded.role);
+    req.body = {
+      ...req.body,
+      ...user.rows[0],
+      role: decoded.role,
+    };
 
     next();
   } catch (err) {
-    res
-      .status(401)
-      .json({
-        error: err instanceof Error ? err.message : "Ошибка авторизации",
-      });
+    res.status(401).json({
+      error: err instanceof Error ? err.message : "Ошибка авторизации",
+    });
     return;
   }
 };
